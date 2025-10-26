@@ -13,6 +13,10 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        arabic: ['Tajawal', 'Arial', 'sans-serif'],
+        latin: ['Inter', 'Arial', 'sans-serif'],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -46,6 +50,11 @@ export default {
         card: {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
+        },
+        news: {
+          hero: "hsl(var(--news-hero))",
+          category: "hsl(var(--news-category))",
+          hover: "hsl(var(--news-hover))",
         },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
