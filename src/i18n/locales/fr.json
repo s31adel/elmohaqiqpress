@@ -1,0 +1,34 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "algeria": "Algérie",
+    "world": "Monde",
+    "sports": "Sports",
+    "economy": "Économie",
+    "tech": "Technologie",
+    "forum": "Tribune Libre"
+  },
+  "sections": {
+    "featured": "Actualités Principales",
+    "algeria": "Algérie",
+    "world": "Monde",
+    "sports": "Sports",
+    "economy": "Économie",
+    "tech": "Technologie"
+  },
+  "footer": {
+    "about": "À propos d'Al-Muhaqiq Press",
+    "aboutText": "Plateforme d'actualités complète offrant les dernières nouvelles d'Algérie et du monde",
+    "sections": "Sections",
+    "contact": "Contactez-nous",
+    "email": "Email",
+    "phone": "Téléphone",
+    "address": "Adresse",
+    "rights": "Tous droits réservés",
+    "followUs": "Suivez-nous"
+  },
+  "time": {
+    "hoursAgo": "il y a {{count}} heure",
+    "hoursAgo_other": "il y a {{count}} heures"
+  }
+}

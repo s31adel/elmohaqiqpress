@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import Header from "@/components/Header";
 import HeroCarousel from "@/components/HeroCarousel";
 import NewsCard from "@/components/NewsCard";
@@ -5,6 +6,9 @@ import Footer from "@/components/Footer";
 import { Separator } from "@/components/ui/separator";
 
 const Index = () => {
+  const { t, i18n } = useTranslation();
+  const isRTL = i18n.language === 'ar';
+
   const featuredNews = [
     {
       title: "وزير الخارجية يجري مباحثات مهمة مع نظيره الفرنسي في باريس",
@@ -97,10 +101,10 @@ const Index = () => {
           <HeroCarousel />
 
           {/* Featured News */}
-          <section className="mt-12" dir="rtl">
+          <section className="mt-12" dir={isRTL ? 'rtl' : 'ltr'}>
             <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
               <span className="w-1 h-8 bg-primary rounded-full"></span>
-              أهم الأخبار
+              {t('sections.featured')}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {featuredNews.map((news, index) => (
@@ -112,10 +116,10 @@ const Index = () => {
           <Separator className="my-12" />
 
           {/* Algeria Section */}
-          <section className="mt-12" dir="rtl" id="algeria">
+          <section className="mt-12" dir={isRTL ? 'rtl' : 'ltr'} id="algeria">
             <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
               <span className="w-1 h-8 bg-accent rounded-full"></span>
-              الجزائر
+              {t('sections.algeria')}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               {algeriaNews.map((news, index) => (
@@ -127,10 +131,10 @@ const Index = () => {
           <Separator className="my-12" />
 
           {/* World Section */}
-          <section className="mt-12" dir="rtl" id="world">
+          <section className="mt-12" dir={isRTL ? 'rtl' : 'ltr'} id="world">
             <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
               <span className="w-1 h-8 bg-primary rounded-full"></span>
-              العالم
+              {t('sections.world')}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {worldNews.map((news, index) => (
@@ -142,10 +146,10 @@ const Index = () => {
           <Separator className="my-12" />
 
           {/* Sports Section */}
-          <section className="mt-12" dir="rtl" id="sports">
+          <section className="mt-12" dir={isRTL ? 'rtl' : 'ltr'} id="sports">
             <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
               <span className="w-1 h-8 bg-accent rounded-full"></span>
-              الرياضة
+              {t('sections.sports')}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {sportsNews.map((news, index) => (

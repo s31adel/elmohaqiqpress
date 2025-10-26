@@ -1,54 +1,64 @@
 import { useState } from "react";
-import { Menu, Search, Globe } from "lucide-react";
+import { Menu, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useTranslation } from "react-i18next";
 import logo from "@/assets/logo.jpg";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { t, i18n } = useTranslation();
   
   const categories = [
-    { id: "home", label: "الرئيسية", href: "#" },
-    { id: "algeria", label: "الجزائر", href: "#algeria" },
-    { id: "world", label: "العالم", href: "#world" },
-    { id: "sports", label: "الرياضة", href: "#sports" },
-    { id: "economy", label: "الاقتصاد", href: "#economy" },
-    { id: "tech", label: "التكنولوجيا", href: "#tech" },
-    { id: "forum", label: "المنبر الحر", href: "#forum" },
+    { id: "home", label: t('nav.home'), href: "#" },
+    { id: "algeria", label: t('nav.algeria'), href: "#algeria" },
+    { id: "world", label: t('nav.world'), href: "#world" },
+    { id: "sports", label: t('nav.sports'), href: "#sports" },
+    { id: "economy", label: t('nav.economy'), href: "#economy" },
+    { id: "tech", label: t('nav.tech'), href: "#tech" },
+    { id: "forum", label: t('nav.forum'), href: "#forum" },
   ];
+
+  const isRTL = i18n.language === 'ar';
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-card/95 backdrop-blur supports-[backdrop-filter]:bg-card/60">
-      <div className="container mx-auto px-4">
-        {/* Top Bar */}
-        <div className="flex h-16 items-center justify-between">
-          <div className="flex items-center gap-4">
-            <Button
-              variant="ghost"
-              size="icon"
-              className="md:hidden"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-            >
-              <Menu className="h-5 w-5" />
-            </Button>
-            
-            <a href="/" className="flex items-center gap-3">
-              <img src={logo} alt="المحقق برس" className="h-12 w-auto" />
+      {/* Full-width Logo Bar */}
+      <div className="w-full bg-gradient-to-r from-primary/5 via-primary/10 to-primary/5 border-b border-primary/20">
+        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
+          <div className="flex-1 flex justify-center">
+            <a href="/" className="block">
+              <img 
+                src={logo} 
+                alt="المحقق برس" 
+                className="h-16 md:h-20 w-auto max-w-full object-contain"
+              />
             </a>
           </div>
-
-          <div className="flex items-center gap-2">
-            <Button variant="ghost" size="icon" className="rounded-full">
-              <Search className="h-5 w-5" />
-            </Button>
-            <Button variant="ghost" size="icon" className="rounded-full">
-              <Globe className="h-5 w-5" />
-            </Button>
+          <div className="absolute right-4 top-4">
+            <LanguageSwitcher />
           </div>
+        </div>
+      </div>
+
+      <div className="container mx-auto px-4">
+        {/* Mobile Menu Button */}
+        <div className="flex h-12 items-center justify-between md:hidden">
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          >
+            <Menu className="h-5 w-5" />
+          </Button>
+          <Button variant="ghost" size="icon">
+            <Search className="h-5 w-5" />
+          </Button>
         </div>
 
         {/* Navigation */}
-        <nav className="hidden md:block border-t">
-          <ul className="flex items-center justify-center gap-1 py-2" dir="rtl">
+        <nav className="hidden md:block">
+          <ul className="flex items-center justify-center gap-1 py-2" dir={isRTL ? 'rtl' : 'ltr'}>
             {categories.map((category) => (
               <li key={category.id}>
                 <a
@@ -64,7 +74,7 @@ const Header = () => {
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <nav className="md:hidden border-t py-4" dir="rtl">
+          <nav className="md:hidden border-t py-4" dir={isRTL ? 'rtl' : 'ltr'}>
             <ul className="space-y-2">
               {categories.map((category) => (
                 <li key={category.id}>
