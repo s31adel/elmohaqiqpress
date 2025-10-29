@@ -22,16 +22,16 @@ const Header = () => {
   const isRTL = i18n.language === 'ar';
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-primary/10 backdrop-blur supports-[backdrop-filter]:bg-primary/15">
+    <header className="sticky top-0 z-50 w-full border-b bg-primary/95 backdrop-blur supports-[backdrop-filter]:bg-primary/90">
       {/* Full-width Logo Bar */}
-      <div className="w-full bg-gradient-to-r from-primary/5 via-primary/10 to-primary/5 border-b border-primary/20">
+      <div className="w-full bg-primary border-b border-primary-foreground/10">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex-1 flex justify-center">
-            <a href="/" className="block">
+            <a href="/" className="block max-w-[50%]">
               <img 
                 src={logo} 
                 alt="المحقق برس" 
-                className="h-16 md:h-20 w-auto max-w-full object-contain"
+                className="h-20 md:h-24 w-full object-contain"
               />
             </a>
           </div>

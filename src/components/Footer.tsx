@@ -23,6 +23,23 @@ const Footer = () => {
             <p className="text-secondary-foreground/80 mb-4 max-w-md">
               {t('footer.aboutText')}
             </p>
+            
+            {/* Management Team */}
+            <div className="mt-6 mb-4 space-y-2 text-sm">
+              <div className="flex gap-2">
+                <span className="font-semibold text-primary">{isRTL ? 'مدير الموقع:' : 'Directeur du site:'}</span>
+                <span className="text-secondary-foreground/60">{isRTL ? 'سيتم إضافة الاسم' : 'À ajouter'}</span>
+              </div>
+              <div className="flex gap-2">
+                <span className="font-semibold text-primary">{isRTL ? 'رئيس التحرير:' : 'Rédacteur en chef:'}</span>
+                <span className="text-secondary-foreground/60">{isRTL ? 'سيتم إضافة الاسم' : 'À ajouter'}</span>
+              </div>
+              <div className="flex gap-2">
+                <span className="font-semibold text-primary">{isRTL ? 'الصحفيين:' : 'Journalistes:'}</span>
+                <span className="text-secondary-foreground/60">{isRTL ? 'سيتم إضافة الأسماء' : 'À ajouter'}</span>
+              </div>
+            </div>
+
             <div className="flex gap-3">
               {socialLinks.map(({ icon: Icon, href, label }) => (
                 <a

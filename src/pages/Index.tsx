@@ -1,7 +1,10 @@
 import { useTranslation } from "react-i18next";
 import Header from "@/components/Header";
+import NewsTicker from "@/components/NewsTicker";
 import HeroCarousel from "@/components/HeroCarousel";
 import NewsCard from "@/components/NewsCard";
+import AdZone from "@/components/AdZone";
+import Flipbook from "@/components/Flipbook";
 import Footer from "@/components/Footer";
 import { Separator } from "@/components/ui/separator";
 
@@ -94,11 +97,15 @@ const Index = () => {
   return (
     <div className="min-h-screen flex flex-col bg-background">
       <Header />
+      <NewsTicker />
       
       <main className="flex-1">
         <div className="container mx-auto px-4 py-8">
           {/* Hero Carousel */}
           <HeroCarousel />
+          
+          {/* Ad Zone */}
+          <AdZone className="my-8" />
 
           {/* Featured News */}
           <section className="mt-12" dir={isRTL ? 'rtl' : 'ltr'}>
@@ -157,8 +164,14 @@ const Index = () => {
               ))}
             </div>
           </section>
+
+          {/* Ad Zone */}
+          <AdZone className="my-12" />
         </div>
       </main>
+
+      {/* Flipbook Section */}
+      <Flipbook />
 
       <Footer />
     </div>
