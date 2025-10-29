@@ -22,7 +22,7 @@ const Header = () => {
   const isRTL = i18n.language === 'ar';
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-card/95 backdrop-blur supports-[backdrop-filter]:bg-card/60">
+    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       {/* Full-width Logo Bar */}
       <div className="w-full bg-gradient-to-r from-primary/5 via-primary/10 to-primary/5 border-b border-primary/20">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
