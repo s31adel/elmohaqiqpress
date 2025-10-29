@@ -25,10 +25,29 @@
     "phone": "Téléphone",
     "address": "Adresse",
     "rights": "Tous droits réservés",
-    "followUs": "Suivez-nous"
+    "followUs": "Suivez-nous",
+    "siteManager": "Directeur du site :",
+    "editorInChief": "Rédacteur en chef :",
+    "journalists": "Journalistes :",
+    "toBeAdded": "À ajouter",
+    "namesToBeAdded": "Noms à ajouter"
   },
   "time": {
     "hoursAgo": "il y a {{count}} heure",
     "hoursAgo_other": "il y a {{count}} heures"
+  },
+  "newsTicker": {
+    "urgent": "URGENT"
+  },
+  "adZone": {
+    "title": "Espace publicitaire",
+    "contact": "Pour annoncer ici, contactez-nous"
+  },
+  "flipbook": {
+    "title": "Version PDF du journal",
+    "page": "Page {{current}} sur {{total}}",
+    "content": "Le contenu du journal sera ajouté ici",
+    "previous": "Précédent",
+    "next": "Suivant"
   }
 }

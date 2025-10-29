@@ -5,7 +5,7 @@ interface AdZoneProps {
 }
 
 const AdZone = ({ className = "" }: AdZoneProps) => {
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
   const isRTL = i18n.language === 'ar';
 
   return (
@@ -13,10 +13,10 @@ const AdZone = ({ className = "" }: AdZoneProps) => {
       <div className="flex flex-col items-center justify-center gap-4 min-h-[250px]">
         <div className="text-muted-foreground text-center">
           <p className="text-lg font-semibold mb-2">
-            {isRTL ? 'مساحة إعلانية' : 'Espace publicitaire'}
+            {t('adZone.title')}
           </p>
           <p className="text-sm">
-            {isRTL ? 'للإعلان هنا اتصل بنا' : 'Pour annoncer ici, contactez-nous'}
+            {t('adZone.contact')}
           </p>
         </div>
       </div>

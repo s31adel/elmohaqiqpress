@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight, BookOpen } from "lucide-react";
 
 const Flipbook = () => {
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
   const isRTL = i18n.language === 'ar';
   const [currentPage, setCurrentPage] = useState(1);
   const totalPages = 8;
@@ -22,7 +22,7 @@ const Flipbook = () => {
       <div className="container mx-auto px-4">
         <h2 className="text-3xl font-bold mb-8 flex items-center justify-center gap-3">
           <BookOpen className="h-8 w-8 text-primary" />
-          {isRTL ? 'النسخة الإلكترونية للجريدة' : 'Version PDF du journal'}
+          {t('flipbook.title')}
         </h2>
         
         <div className="max-w-4xl mx-auto">
@@ -31,10 +31,10 @@ const Flipbook = () => {
             <div className="text-center text-muted-foreground">
               <BookOpen className="h-24 w-24 mx-auto mb-4 text-primary/30" />
               <p className="text-xl font-semibold mb-2">
-                {isRTL ? `الصفحة ${currentPage} من ${totalPages}` : `Page ${currentPage} sur ${totalPages}`}
+                {t('flipbook.page', { current: currentPage, total: totalPages })}
               </p>
               <p className="text-sm">
-                {isRTL ? 'سيتم إضافة محتوى الجريدة هنا' : 'Le contenu du journal sera ajouté ici'}
+                {t('flipbook.content')}
               </p>
             </div>
           </div>
@@ -48,7 +48,7 @@ const Flipbook = () => {
               size="lg"
             >
               <ChevronRight className="h-5 w-5" />
-              {isRTL ? 'التالي' : 'Suivant'}
+              {t('flipbook.next')}
             </Button>
             
             <span className="text-sm text-muted-foreground px-4">
@@ -61,7 +61,7 @@ const Flipbook = () => {
               variant="outline"
               size="lg"
             >
-              {isRTL ? 'السابق' : 'Précédent'}
+              {t('flipbook.previous')}
               <ChevronLeft className="h-5 w-5" />
             </Button>
           </div>

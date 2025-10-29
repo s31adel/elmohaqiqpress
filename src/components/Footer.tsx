@@ -27,16 +27,16 @@ const Footer = () => {
             {/* Management Team */}
             <div className="mt-6 mb-4 space-y-2 text-sm">
               <div className="flex gap-2">
-                <span className="font-semibold text-primary">{isRTL ? 'مدير الموقع:' : 'Directeur du site:'}</span>
-                <span className="text-secondary-foreground/60">{isRTL ? 'سيتم إضافة الاسم' : 'À ajouter'}</span>
+                <span className="font-semibold text-primary">{t('footer.siteManager')}</span>
+                <span className="text-secondary-foreground/60">{t('footer.toBeAdded')}</span>
               </div>
               <div className="flex gap-2">
-                <span className="font-semibold text-primary">{isRTL ? 'رئيس التحرير:' : 'Rédacteur en chef:'}</span>
-                <span className="text-secondary-foreground/60">{isRTL ? 'سيتم إضافة الاسم' : 'À ajouter'}</span>
+                <span className="font-semibold text-primary">{t('footer.editorInChief')}</span>
+                <span className="text-secondary-foreground/60">{t('footer.toBeAdded')}</span>
               </div>
               <div className="flex gap-2">
-                <span className="font-semibold text-primary">{isRTL ? 'الصحفيين:' : 'Journalistes:'}</span>
-                <span className="text-secondary-foreground/60">{isRTL ? 'سيتم إضافة الأسماء' : 'À ajouter'}</span>
+                <span className="font-semibold text-primary">{t('footer.journalists')}</span>
+                <span className="text-secondary-foreground/60">{t('footer.namesToBeAdded')}</span>
               </div>
             </div>
 

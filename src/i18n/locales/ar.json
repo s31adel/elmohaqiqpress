@@ -25,10 +25,29 @@
     "phone": "الهاتف",
     "address": "العنوان",
     "rights": "جميع الحقوق محفوظة",
-    "followUs": "تابعنا على"
+    "followUs": "تابعنا على",
+    "siteManager": "مدير الموقع:",
+    "editorInChief": "رئيس التحرير:",
+    "journalists": "الصحفيين:",
+    "toBeAdded": "سيتم إضافة الاسم",
+    "namesToBeAdded": "سيتم إضافة الأسماء"
   },
   "time": {
     "hoursAgo": "منذ {{count}} ساعة",
     "hoursAgo_other": "منذ {{count}} ساعات"
+  },
+  "newsTicker": {
+    "urgent": "عاجل"
+  },
+  "adZone": {
+    "title": "مساحة إعلانية",
+    "contact": "للإعلان هنا اتصل بنا"
+  },
+  "flipbook": {
+    "title": "النسخة الإلكترونية للجريدة",
+    "page": "الصفحة {{current}} من {{total}}",
+    "content": "سيتم إضافة محتوى الجريدة هنا",
+    "previous": "السابق",
+    "next": "التالي"
   }
 }

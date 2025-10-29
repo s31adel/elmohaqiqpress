@@ -25,10 +25,29 @@
     "phone": "Phone",
     "address": "Address",
     "rights": "All rights reserved",
-    "followUs": "Follow Us"
+    "followUs": "Follow Us",
+    "siteManager": "Site Manager:",
+    "editorInChief": "Editor-in-Chief:",
+    "journalists": "Journalists:",
+    "toBeAdded": "To be added",
+    "namesToBeAdded": "Names to be added"
   },
   "time": {
     "hoursAgo": "{{count}} hour ago",
     "hoursAgo_other": "{{count}} hours ago"
+  },
+  "newsTicker": {
+    "urgent": "URGENT"
+  },
+  "adZone": {
+    "title": "Advertising Space",
+    "contact": "To advertise here, contact us"
+  },
+  "flipbook": {
+    "title": "PDF Version of the Newspaper",
+    "page": "Page {{current}} of {{total}}",
+    "content": "Newspaper content will be added here",
+    "previous": "Previous",
+    "next": "Next"
   }
 }
