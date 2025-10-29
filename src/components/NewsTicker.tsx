@@ -1,29 +1,22 @@
 import { useTranslation } from "react-i18next";
 import { Badge } from "@/components/ui/badge";
+import { useContentTranslation } from '@/hooks/useContentTranslation';
 
 const NewsTicker = () => {
   const { t, i18n } = useTranslation();
   const isRTL = i18n.language === 'ar';
 
-  const breakingNews = {
-    ar: [
-      "عاجل: اجتماع طارئ لمجلس الوزراء لمناقشة الأوضاع الاقتصادية",
-      "آخر الأخبار: وصول وفد دبلوماسي رفيع المستوى إلى العاصمة",
-      "مستجدات: انطلاق حملة وطنية للتوعية الصحية",
-    ],
-    fr: [
-      "Urgent : Réunion d'urgence du Conseil des ministres pour discuter de la situation économique",
-      "Dernières nouvelles : Arrivée d'une délégation diplomatique de haut niveau dans la capitale",
-      "Nouveautés : Lancement d'une campagne nationale de sensibilisation à la santé",
-    ],
-    en: [
-      "Breaking: Emergency Council of Ministers meeting to discuss economic situation",
-      "Latest news: High-level diplomatic delegation arrives in the capital",
-      "Updates: Launch of national health awareness campaign",
-    ]
-  };
+  const breakingNewsAr = [
+    "عاجل: اجتماع طارئ لمجلس الوزراء لمناقشة الأوضاع الاقتصادية",
+    "آخر الأخبار: وصول وفد دبلوماسي رفيع المستوى إلى العاصمة",
+    "مستجدات: انطلاق حملة وطنية للتوعية الصحية",
+  ];
 
-  const currentNews = breakingNews[i18n.language as keyof typeof breakingNews] || breakingNews.ar;
+  const { translatedContent: news1 } = useContentTranslation(breakingNewsAr[0], 'ticker-news-1');
+  const { translatedContent: news2 } = useContentTranslation(breakingNewsAr[1], 'ticker-news-2');
+  const { translatedContent: news3 } = useContentTranslation(breakingNewsAr[2], 'ticker-news-3');
+
+  const currentNews = [news1, news2, news3];
 
   return (
     <div className="bg-destructive text-destructive-foreground py-2 overflow-hidden" dir={isRTL ? 'rtl' : 'ltr'}>
