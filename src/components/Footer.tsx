@@ -27,15 +27,15 @@ const Footer = () => {
             {/* Management Team */}
             <div className="mt-6 mb-4 space-y-2 text-sm">
               <div className="flex gap-2">
-                <span className="font-semibold text-primary">{t('footer.siteManager')}</span>
+                <span className="font-semibold text-[hsl(var(--menu-bar))]">{t('footer.siteManager')}</span>
                 <span className="text-secondary-foreground/60">{t('footer.toBeAdded')}</span>
               </div>
               <div className="flex gap-2">
-                <span className="font-semibold text-primary">{t('footer.editorInChief')}</span>
+                <span className="font-semibold text-[hsl(var(--menu-bar))]">{t('footer.editorInChief')}</span>
                 <span className="text-secondary-foreground/60">{t('footer.toBeAdded')}</span>
               </div>
               <div className="flex gap-2">
-                <span className="font-semibold text-primary">{t('footer.journalists')}</span>
+                <span className="font-semibold text-[hsl(var(--menu-bar))]">{t('footer.journalists')}</span>
                 <span className="text-secondary-foreground/60">{t('footer.namesToBeAdded')}</span>
               </div>
             </div>
