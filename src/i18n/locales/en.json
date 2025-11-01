@@ -1,12 +1,12 @@
 {
   "nav": {
     "home": "Home",
+    "local": "Local",
     "algeria": "Algeria",
     "world": "World",
     "sports": "Sports",
     "economy": "Economy",
-    "tech": "Technology",
-    "forum": "Free Forum"
+    "forum": "Free Platform"
   },
   "sections": {
     "featured": "Top News",

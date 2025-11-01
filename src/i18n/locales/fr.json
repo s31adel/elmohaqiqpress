@@ -1,11 +1,11 @@
 {
   "nav": {
     "home": "Accueil",
+    "local": "Local",
     "algeria": "Algérie",
     "world": "Monde",
     "sports": "Sports",
     "economy": "Économie",
-    "tech": "Technologie",
     "forum": "Tribune Libre"
   },
   "sections": {

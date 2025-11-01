@@ -11,11 +11,11 @@ const Header = () => {
   
   const categories = [
     { id: "home", label: t('nav.home'), href: "#" },
+    { id: "local", label: t('nav.local'), href: "#local" },
     { id: "algeria", label: t('nav.algeria'), href: "#algeria" },
     { id: "world", label: t('nav.world'), href: "#world" },
     { id: "sports", label: t('nav.sports'), href: "#sports" },
     { id: "economy", label: t('nav.economy'), href: "#economy" },
-    { id: "tech", label: t('nav.tech'), href: "#tech" },
     { id: "forum", label: t('nav.forum'), href: "#forum" },
   ];
 

@@ -2,6 +2,7 @@ import { useTranslation } from "react-i18next";
 import Header from "@/components/Header";
 import NewsTicker from "@/components/NewsTicker";
 import HeroCarousel from "@/components/HeroCarousel";
+import CarouselNewsColumn from "@/components/CarouselNewsColumn";
 import NewsCard from "@/components/NewsCard";
 import AdZone from "@/components/AdZone";
 import Flipbook from "@/components/Flipbook";
@@ -11,6 +12,37 @@ import { Separator } from "@/components/ui/separator";
 const Index = () => {
   const { t, i18n } = useTranslation();
   const isRTL = i18n.language === 'ar';
+
+  const heroCarouselNews = [
+    {
+      id: 1,
+      title: "الجزائر تحقق إنجازات اقتصادية جديدة في قطاع الطاقة المتجددة",
+      category: "الاقتصاد",
+      image: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=1200&h=600&fit=crop",
+      excerpt: "تواصل الجزائر تعزيز استثماراتها في مجال الطاقة المتجددة مع افتتاح محطات جديدة للطاقة الشمسية"
+    },
+    {
+      id: 2,
+      title: "المنتخب الوطني يستعد لمواجهة حاسمة في تصفيات كأس العالم",
+      category: "الرياضة",
+      image: "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=1200&h=600&fit=crop",
+      excerpt: "يواصل المنتخب الوطني الجزائري تحضيراته المكثفة للقاء المرتقب ضمن التصفيات القارية"
+    },
+    {
+      id: 3,
+      title: "تطورات تكنولوجية مهمة في قطاع الذكاء الاصطناعي بالجزائر",
+      category: "التكنولوجيا",
+      image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200&h=600&fit=crop",
+      excerpt: "شهدت الساحة التكنولوجية الجزائرية إطلاق مشاريع جديدة في مجال الذكاء الاصطناعي والابتكار"
+    },
+    {
+      id: 4,
+      title: "قمة دولية تناقش التحديات المناخية والتنمية المستدامة",
+      category: "العالم",
+      image: "https://images.unsplash.com/photo-1569163139394-de4798aa62b6?w=1200&h=600&fit=crop",
+      excerpt: "انطلقت فعاليات القمة الدولية للمناخ بمشاركة واسعة من قادة العالم لمناقشة التحديات البيئية"
+    }
+  ];
 
   const featuredNews = [
     {
@@ -111,8 +143,15 @@ const Index = () => {
       
       <main className="flex-1">
         <div className="container mx-auto px-4 py-8">
-          {/* Hero Carousel */}
-          <HeroCarousel />
+          {/* Hero Carousel and News Column */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <div className="lg:col-span-2">
+              <HeroCarousel newsItems={heroCarouselNews} />
+            </div>
+            <div className="lg:col-span-1">
+              <CarouselNewsColumn newsItems={heroCarouselNews} />
+            </div>
+          </div>
           
           {/* Ad Zone */}
           <AdZone className="my-8" />

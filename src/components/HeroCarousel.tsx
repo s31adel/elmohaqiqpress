@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-interface NewsItem {
+export interface NewsItem {
   id: number;
   title: string;
   category: string;
@@ -10,10 +10,14 @@ interface NewsItem {
   excerpt: string;
 }
 
-const HeroCarousel = () => {
+interface HeroCarouselProps {
+  newsItems?: NewsItem[];
+}
+
+const HeroCarousel = ({ newsItems }: HeroCarouselProps) => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
-  const heroNews: NewsItem[] = [
+  const defaultNews: NewsItem[] = [
     {
       id: 1,
       title: "الجزائر تحقق إنجازات اقتصادية جديدة في قطاع الطاقة المتجددة",
@@ -44,10 +48,12 @@ const HeroCarousel = () => {
     }
   ];
 
+  const heroNews = newsItems || defaultNews;
+
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % heroNews.length);
-    }, 5000);
+    }, 3000);
 
     return () => clearInterval(timer);
   }, [heroNews.length]);
