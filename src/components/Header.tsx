@@ -27,11 +27,12 @@ const Header = () => {
       <div className="w-full bg-primary border-b border-primary-foreground/10">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex-1 flex justify-center">
-            <a href="/" className="block max-w-[80%]">
+            <a href="/" className="block w-full max-w-md">
               <img 
                 src={logo} 
                 alt="المحقق برس" 
-                className="h-20 md:h-24 w-full object-contain"
+                className="h-32 md:h-40 w-auto mx-auto object-contain"
+                style={{ imageRendering: 'crisp-edges' }}
               />
             </a>
           </div>
