@@ -143,14 +143,14 @@ const Index = () => {
       
       <main className="flex-1">
         <div className="container mx-auto px-4 py-8">
-          {/* Hero Carousel and News Column */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="md:col-span-2">
-              <HeroCarousel newsItems={heroCarouselNews} />
-            </div>
-            <div className="md:col-span-1">
-              <CarouselNewsColumn newsItems={heroCarouselNews} />
-            </div>
+          {/* Hero Carousel */}
+          <div className="mb-6">
+            <HeroCarousel newsItems={heroCarouselNews} />
+          </div>
+          
+          {/* Related News Strip */}
+          <div>
+            <CarouselNewsColumn newsItems={heroCarouselNews} />
           </div>
           
           {/* Ad Zone */}
