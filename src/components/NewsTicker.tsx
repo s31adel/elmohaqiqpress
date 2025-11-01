@@ -19,7 +19,7 @@ const NewsTicker = () => {
   const currentNews = [news1, news2, news3];
 
   return (
-    <div className="bg-destructive text-destructive-foreground py-2 overflow-hidden" dir={isRTL ? 'rtl' : 'ltr'}>
+    <div className="bg-[hsl(var(--breaking-news-bg))] text-white py-2 overflow-hidden" dir={isRTL ? 'rtl' : 'ltr'}>
       <div className="container mx-auto px-4 flex items-center gap-4">
         <Badge variant="secondary" className="shrink-0 bg-white text-destructive font-bold">
           {t('newsTicker.urgent')}
