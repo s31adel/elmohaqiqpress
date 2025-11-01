@@ -27,7 +27,7 @@ const Header = () => {
       <div className="w-full bg-primary border-b border-primary-foreground/10">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex-1 flex justify-center">
-            <a href="/" className="block max-w-[50%]">
+            <a href="/" className="block max-w-[80%]">
               <img 
                 src={logo} 
                 alt="المحقق برس" 
