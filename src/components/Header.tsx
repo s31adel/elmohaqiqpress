@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Menu, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useTranslation } from "react-i18next";
-import logo from "@/assets/logo.jpg";
+import logo from "@/assets/elmohaqiq-logo.png";
 import LanguageSwitcher from "./LanguageSwitcher";
 
 const Header = () => {
