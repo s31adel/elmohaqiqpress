@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useTranslation } from "react-i18next";
+import { useContentTranslation } from '@/hooks/useContentTranslation';
 
 export interface NewsItem {
   id: number;
@@ -14,8 +16,16 @@ interface HeroCarouselProps {
   newsItems?: NewsItem[];
 }
 
+const TranslatedText = ({ text, id }: { text: string; id: string }) => {
+  const { translatedContent } = useContentTranslation(text, id);
+  return <>{translatedContent}</>;
+};
+
 const HeroCarousel = ({ newsItems }: HeroCarouselProps) => {
   const [currentSlide, setCurrentSlide] = useState(0);
+
+  const { i18n } = useTranslation();
+  const isRTL = i18n.language === 'ar';
 
   const defaultNews: NewsItem[] = [
     {
@@ -67,7 +77,7 @@ const HeroCarousel = ({ newsItems }: HeroCarouselProps) => {
   };
 
   return (
-    <div className="relative w-full h-[500px] md:h-[600px] overflow-hidden rounded-lg group" dir="rtl">
+    <div className="relative w-full h-[500px] md:h-[600px] overflow-hidden rounded-lg group" dir={isRTL ? 'rtl' : 'ltr'}>
       {heroNews.map((news, index) => (
         <div
           key={news.id}
@@ -85,13 +95,13 @@ const HeroCarousel = ({ newsItems }: HeroCarouselProps) => {
             
             <div className="absolute bottom-0 right-0 left-0 p-6 md:p-12">
               <span className="category-badge mb-4">
-                {news.category}
+                <TranslatedText text={news.category} id={`hero-${news.id}-category`} />
               </span>
               <h2 className="text-3xl md:text-5xl font-bold text-white mb-4 leading-tight">
-                {news.title}
+                <TranslatedText text={news.title} id={`hero-${news.id}-title`} />
               </h2>
               <p className="text-white/90 text-lg md:text-xl max-w-3xl">
-                {news.excerpt}
+                <TranslatedText text={news.excerpt} id={`hero-${news.id}-excerpt`} />
               </p>
             </div>
           </div>

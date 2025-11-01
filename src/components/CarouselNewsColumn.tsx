@@ -1,5 +1,6 @@
 import { useTranslation } from "react-i18next";
 import { Card } from "@/components/ui/card";
+import { useContentTranslation } from '@/hooks/useContentTranslation';
 
 interface NewsItem {
   id: number;
@@ -12,6 +13,11 @@ interface NewsItem {
 interface CarouselNewsColumnProps {
   newsItems: NewsItem[];
 }
+
+const TranslatedText = ({ text, id }: { text: string; id: string }) => {
+  const { translatedContent } = useContentTranslation(text, id);
+  return <>{translatedContent}</>;
+};
 
 const CarouselNewsColumn = ({ newsItems }: CarouselNewsColumnProps) => {
   const { i18n } = useTranslation();
@@ -31,13 +37,13 @@ const CarouselNewsColumn = ({ newsItems }: CarouselNewsColumnProps) => {
             </div>
             <div className="p-4 flex-1 flex flex-col">
               <span className="category-badge mb-2 inline-block w-fit">
-                {news.category}
+                <TranslatedText text={news.category} id={`strip-${news.id}-category`} />
               </span>
               <h3 className="font-bold text-sm mb-2 line-clamp-2 leading-tight flex-1">
-                {news.title}
+                <TranslatedText text={news.title} id={`strip-${news.id}-title`} />
               </h3>
               <p className="text-muted-foreground text-xs line-clamp-2">
-                {news.excerpt}
+                <TranslatedText text={news.excerpt} id={`strip-${news.id}-excerpt`} />
               </p>
             </div>
           </div>
