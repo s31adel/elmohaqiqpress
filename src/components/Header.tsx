@@ -42,7 +42,7 @@ const Header = () => {
         </div>
       </div>
 
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 bg-[hsl(var(--menu-bar))]">
         {/* Mobile Menu Button */}
         <div className="flex h-12 items-center justify-between md:hidden">
           <Button
