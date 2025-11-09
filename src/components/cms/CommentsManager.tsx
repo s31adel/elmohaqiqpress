@@ -4,12 +4,14 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { useToast } from '@/hooks/use-toast';
-import { Check, X, Trash } from 'lucide-react';
+import { Check, X, Trash, AlertTriangle } from 'lucide-react';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
 interface Comment {
   id: string;
   content: string;
   approved: boolean;
+  status: string;
   created_at: string;
   author_name: string | null;
   user_id: string | null;
@@ -34,6 +36,34 @@ export default function CommentsManager() {
 
   useEffect(() => {
     fetchComments();
+
+    // Subscribe to realtime updates
+    const channel = supabase
+      .channel('comments-changes')
+      .on(
+        'postgres_changes',
+        {
+          event: '*',
+          schema: 'public',
+          table: 'comments'
+        },
+        (payload) => {
+          console.log('Comment changed:', payload);
+          fetchComments();
+          
+          if (payload.eventType === 'INSERT') {
+            toast({ 
+              title: 'Nouveau commentaire', 
+              description: 'Un nouveau commentaire a été ajouté'
+            });
+          }
+        }
+      )
+      .subscribe();
+
+    return () => {
+      supabase.removeChannel(channel);
+    };
   }, []);
 
   const fetchComments = async () => {
@@ -77,16 +107,22 @@ export default function CommentsManager() {
     }
   };
 
-  const handleApprove = async (id: string, approved: boolean) => {
+  const handleStatusChange = async (id: string, status: string) => {
+    const approved = status === 'approved';
     const { error } = await supabase
       .from('comments')
-      .update({ approved })
+      .update({ status, approved })
       .eq('id', id);
 
     if (error) {
       toast({ title: 'Erreur', description: error.message, variant: 'destructive' });
     } else {
-      toast({ title: approved ? 'Commentaire approuvé' : 'Approbation retirée' });
+      const statusLabels: { [key: string]: string } = {
+        'pending': 'en attente',
+        'approved': 'approuvé',
+        'spam': 'marqué comme spam'
+      };
+      toast({ title: `Commentaire ${statusLabels[status]}` });
       fetchComments();
     }
   };
@@ -116,22 +152,34 @@ export default function CommentsManager() {
                 </CardTitle>
                 <CardDescription>
                   {articles[comment.article_id]} • {new Date(comment.created_at).toLocaleDateString('fr-FR')}
-                  {' '}
-                  <Badge variant={comment.approved ? 'default' : 'secondary'}>
-                    {comment.approved ? 'Approuvé' : 'En attente'}
-                  </Badge>
                 </CardDescription>
               </div>
-              <div className="flex gap-2">
-                {!comment.approved ? (
-                  <Button variant="ghost" size="icon" onClick={() => handleApprove(comment.id, true)}>
-                    <Check className="w-4 h-4 text-green-600" />
-                  </Button>
-                ) : (
-                  <Button variant="ghost" size="icon" onClick={() => handleApprove(comment.id, false)}>
-                    <X className="w-4 h-4 text-orange-600" />
-                  </Button>
-                )}
+              <div className="flex items-center gap-2">
+                <Select
+                  value={comment.status}
+                  onValueChange={(value) => handleStatusChange(comment.id, value)}
+                >
+                  <SelectTrigger className="w-[140px]">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="pending">
+                      <div className="flex items-center gap-2">
+                        <Badge variant="secondary">En attente</Badge>
+                      </div>
+                    </SelectItem>
+                    <SelectItem value="approved">
+                      <div className="flex items-center gap-2">
+                        <Badge variant="default">Approuvé</Badge>
+                      </div>
+                    </SelectItem>
+                    <SelectItem value="spam">
+                      <div className="flex items-center gap-2">
+                        <Badge variant="destructive">Spam</Badge>
+                      </div>
+                    </SelectItem>
+                  </SelectContent>
+                </Select>
                 <Button variant="ghost" size="icon" onClick={() => handleDelete(comment.id)}>
                   <Trash className="w-4 h-4" />
                 </Button>

@@ -148,6 +148,7 @@ export type Database = {
           content: string
           created_at: string
           id: string
+          status: string
           user_id: string | null
         }
         Insert: {
@@ -158,6 +159,7 @@ export type Database = {
           content: string
           created_at?: string
           id?: string
+          status?: string
           user_id?: string | null
         }
         Update: {
@@ -168,6 +170,7 @@ export type Database = {
           content?: string
           created_at?: string
           id?: string
+          status?: string
           user_id?: string | null
         }
         Relationships: [
@@ -213,6 +216,66 @@ export type Database = {
           storage_path?: string | null
           uploaded_by?: string | null
           url?: string
+        }
+        Relationships: []
+      }
+      newsletter_campaigns: {
+        Row: {
+          content: string
+          created_at: string
+          created_by: string | null
+          id: string
+          sent_at: string | null
+          status: string
+          subject: string
+          title: string
+        }
+        Insert: {
+          content: string
+          created_at?: string
+          created_by?: string | null
+          id?: string
+          sent_at?: string | null
+          status?: string
+          subject: string
+          title: string
+        }
+        Update: {
+          content?: string
+          created_at?: string
+          created_by?: string | null
+          id?: string
+          sent_at?: string | null
+          status?: string
+          subject?: string
+          title?: string
+        }
+        Relationships: []
+      }
+      newsletter_subscribers: {
+        Row: {
+          created_at: string
+          email: string
+          id: string
+          subscribed: boolean
+          subscribed_at: string
+          unsubscribed_at: string | null
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          id?: string
+          subscribed?: boolean
+          subscribed_at?: string
+          unsubscribed_at?: string | null
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          id?: string
+          subscribed?: boolean
+          subscribed_at?: string
+          unsubscribed_at?: string | null
         }
         Relationships: []
       }

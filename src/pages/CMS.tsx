@@ -3,7 +3,7 @@ import { useAuth } from '@/contexts/AuthContext';
 import { useUserRole } from '@/hooks/useUserRole';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Button } from '@/components/ui/button';
-import { LogOut, FileText, FolderTree, Tags, MessageSquare, Users, Image, FileEdit } from 'lucide-react';
+import { LogOut, FileText, FolderTree, Tags, MessageSquare, Users, Image, FileEdit, Mail } from 'lucide-react';
 import ArticlesManager from '@/components/cms/ArticlesManager';
 import CategoriesManager from '@/components/cms/CategoriesManager';
 import TagsManager from '@/components/cms/TagsManager';
@@ -11,6 +11,7 @@ import CommentsManager from '@/components/cms/CommentsManager';
 import UsersManager from '@/components/cms/UsersManager';
 import MediaManager from '@/components/cms/MediaManager';
 import PagesManager from '@/components/cms/PagesManager';
+import NewsletterManager from '@/components/cms/NewsletterManager';
 
 export default function CMS() {
   const { user, signOut, loading: authLoading } = useAuth();
@@ -43,7 +44,7 @@ export default function CMS() {
 
       <main className="container mx-auto px-4 py-8">
         <Tabs defaultValue="articles" className="w-full">
-          <TabsList className="grid w-full grid-cols-7 mb-8">
+          <TabsList className="grid w-full grid-cols-8 mb-8">
             <TabsTrigger value="articles" className="flex items-center gap-2">
               <FileText className="w-4 h-4" />
               Articles
@@ -71,6 +72,10 @@ export default function CMS() {
             <TabsTrigger value="users" className="flex items-center gap-2">
               <Users className="w-4 h-4" />
               Utilisateurs
+            </TabsTrigger>
+            <TabsTrigger value="newsletter" className="flex items-center gap-2">
+              <Mail className="w-4 h-4" />
+              Newsletter
             </TabsTrigger>
           </TabsList>
 
@@ -100,6 +105,10 @@ export default function CMS() {
 
           <TabsContent value="users">
             <UsersManager />
+          </TabsContent>
+
+          <TabsContent value="newsletter">
+            <NewsletterManager />
           </TabsContent>
         </Tabs>
       </main>
