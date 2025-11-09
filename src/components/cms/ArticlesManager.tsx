@@ -15,8 +15,9 @@ import { Badge } from '@/components/ui/badge';
 import { Calendar } from '@/components/ui/calendar';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { useToast } from '@/hooks/use-toast';
-import { Plus, Edit, Trash, Eye, CalendarIcon, X, Filter } from 'lucide-react';
+import { Plus, Edit, Trash, Eye, CalendarIcon, X, Filter, Image as ImageIcon } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import MediaLibraryDialog from './MediaLibraryDialog';
 
 interface Article {
   id: string;
@@ -60,6 +61,7 @@ export default function ArticlesManager() {
   const [filterStatus, setFilterStatus] = useState<string>('all');
   const [filterDateFrom, setFilterDateFrom] = useState<Date | undefined>();
   const [filterDateTo, setFilterDateTo] = useState<Date | undefined>();
+  const [mediaLibraryOpen, setMediaLibraryOpen] = useState(false);
 
   const [formData, setFormData] = useState({
     title: '',
@@ -361,13 +363,29 @@ export default function ArticlesManager() {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="featured_image">Image à la une (URL)</Label>
-                <Input
-                  id="featured_image"
-                  value={formData.featured_image}
-                  onChange={(e) => setFormData({ ...formData, featured_image: e.target.value })}
-                  placeholder="https://..."
-                />
+                <Label htmlFor="featured_image">Image à la une</Label>
+                <div className="flex gap-2">
+                  <Input
+                    id="featured_image"
+                    value={formData.featured_image}
+                    onChange={(e) => setFormData({ ...formData, featured_image: e.target.value })}
+                    placeholder="URL de l'image ou sélectionnez depuis la bibliothèque"
+                  />
+                  <Button
+                    type="button"
+                    variant="outline"
+                    onClick={() => setMediaLibraryOpen(true)}
+                  >
+                    <ImageIcon className="w-4 h-4" />
+                  </Button>
+                </div>
+                {formData.featured_image && (
+                  <img
+                    src={formData.featured_image}
+                    alt="Aperçu"
+                    className="mt-2 w-full max-w-xs h-32 object-cover rounded"
+                  />
+                )}
               </div>
 
               <Button type="submit" className="w-full">
@@ -575,6 +593,13 @@ export default function ArticlesManager() {
           </Card>
         ))}
       </div>
+
+      {/* Media Library Dialog */}
+      <MediaLibraryDialog
+        open={mediaLibraryOpen}
+        onOpenChange={setMediaLibraryOpen}
+        onSelect={(url) => setFormData({ ...formData, featured_image: url })}
+      />
     </div>
   );
 }

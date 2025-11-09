@@ -182,29 +182,35 @@ export type Database = {
       }
       media: {
         Row: {
+          alt_text: string | null
           created_at: string
           filename: string
           id: string
           mime_type: string | null
           size: number | null
+          storage_path: string | null
           uploaded_by: string | null
           url: string
         }
         Insert: {
+          alt_text?: string | null
           created_at?: string
           filename: string
           id?: string
           mime_type?: string | null
           size?: number | null
+          storage_path?: string | null
           uploaded_by?: string | null
           url: string
         }
         Update: {
+          alt_text?: string | null
           created_at?: string
           filename?: string
           id?: string
           mime_type?: string | null
           size?: number | null
+          storage_path?: string | null
           uploaded_by?: string | null
           url?: string
         }
